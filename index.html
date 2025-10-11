@@ -11,7 +11,6 @@
         /* Base and General Styles */
         html {
             height: 100%;
-            /* Prevents horizontal scroll on small screens when using percentage widths */
             overflow-x: hidden; 
         }
 
@@ -21,7 +20,6 @@
             padding: 0;
             background: #f8f9fa;
             color: #333;
-            /* Using min-height instead of fixed large height */
             min-height: 100vh; 
         }
 
@@ -30,14 +28,13 @@
             height: 68px;
             display: flex;
             align-items: center;
-            /* Use space-between for better responsiveness */
             justify-content: space-between; 
-            padding: 0 5vw; /* Use viewport units for side padding */
+            padding: 0 5vw;
             background-color: rgb(24, 119, 242);
             position: fixed;
             top: 0;
             width: 100%;
-            box-sizing: border-box; /* Crucial for padding/border not affecting total width */
+            box-sizing: border-box;
             z-index: 1000;
         }
 
@@ -72,8 +69,8 @@
         .nav-buttons {
             display: flex;
             align-items: center;
-            justify-content: flex-end; /* Align to the right */
-            gap: 20px; /* Use gap instead of fixed width */
+            justify-content: flex-end;
+            gap: 20px;
         }
 
         .nav-buttons div {
@@ -89,100 +86,98 @@
             border-color: white; 
         }
 
+        /* DESKTOP CTA BUTTON: Harmonized earthy brown style */
         .booknow {
+            background-color:white; /* Warm earthy brown/taupe */
             color: rgb(24, 119, 242);
             font-size: 20px;
-            border: none;
+            border: 2px none #8c6a5a; 
             border-radius: 5px;
-            padding: 8px 15px; /* Adjust padding for better look */
+            padding: 8px 15px;
             font-weight: 700;
             cursor: pointer;
-            white-space: nowrap; /* Prevent button text from wrapping */
+            white-space: nowrap;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        
+        .booknow:hover {
+            background-color: rgb(24, 119, 242) ; 
+            color: white;
+            border: 1px solid white;
         }
 
         /* SECTION 1 - HERO */
         .section-1 {
-            /* Adjust height to be flexible and account for the fixed header */
             height: calc(100vh - 68px); 
             min-height: 450px;
             display: flex;
             margin-top: 68px;
-            position: relative; /* Make it the positioning context for absolute children */
+            position: relative;
         }
 
         .old-couple-image {
-            width: 100%; /* Make image take full width of container */
-            height: 100%; /* Make image take full height of container */
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             position: absolute;
             top: 0;
             left: 0;
-            z-index: -1; /* Place behind text */
+            z-index: -1;
         }
 
-        /* Hero Text and Button Positioning */
-        .title-inside-couple-image, .text-in-image, .text-in-image-line2, .book-service-button {
+        /* Hero Text Positioning: Bottom Left */
+        .title-inside-couple-image, .text-in-image, .text-in-image-line2 {
             position: absolute;
-            left: 5vw; /* Use viewport units for left margin */
-            color: white;
+            left: 5vw;
+            color: #f0f0e0;
             text-shadow:
-                -1px -1px 0 rgba(0, 0, 0, 0.7),
-                1px -1px 0 rgba(0, 0, 0, 0.7),
-                -1px 1px 0 rgba(0, 0, 0, 0.7),
-                1px 1px 0 rgba(0, 0, 0, 0.7); 
+                -1px -1px 0 rgba(0, 0, 0, 0.6),
+                1px -1px 0 rgba(0, 0, 0, 0.6),
+                -1px 1px 0 rgba(0, 0, 0, 0.6),
+                1px 1px 0 rgba(0, 0, 0, 0.6); 
         }
-
+        
+        /* H1 FONT STYLE & POSITION (Bottom Left) */
         .title-inside-couple-image {
-            font-size: clamp(30px, 6vw, 50px); /* Use clamp for fluid typography */
-            top: 100px;
+            font-family: 'BBH Sans Hegarty', sans-serif;
+            font-weight: 800;
+            font-size: clamp(35px, 7vw, 60px);
+            bottom: clamp(100px, 20vh, 150px); 
         }
 
+        /* P TAG FONT STYLE & POSITION */
         .text-in-image, .text-in-image-line2 {
-            font-size: clamp(18px, 3vw, 26px);
+            font-family: "Roboto", sans-serif; 
+            font-weight: 500;
+            font-size: clamp(20px, 3.5vw, 28px);
             max-width: 90%;
+            color: #e0e0d0;
         }
 
         .text-in-image {
-            top: clamp(200px, 35vh, 250px);
+            bottom: clamp(65px, 12vh, 100px); 
         }
 
         .text-in-image-line2 {
-            top: clamp(230px, 40vh, 285px);
-        }
-
-        .book-service-button {
-            background-color: rgb(24, 119, 242);
-            padding: 15px 30px; /* Slightly smaller base padding */
-            font-size: clamp(18px, 3.5vw, 26px);
-            border: none;
-            border-radius: 10px;
-            top: clamp(290px, 50vh, 350px);
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .book-service-button:hover {
-            background-color: rgb(15, 71, 144);
+            bottom: clamp(30px, 7vh, 60px); 
         }
 
         /* Container & Titles */
         .container {
             max-width: 1200px;
             margin: auto;
-            /* Flexible vertical padding, minimum horizontal padding */
             padding: 40px 5vw; 
         }
 
         .section-title {
             text-align: center;
             margin-bottom: 20px;
-            font-size: clamp(35px, 6vw, 58px); /* Fluid title size */
+            font-size: clamp(35px, 6vw, 58px);
         }
 
         .section-subtitle {
             text-align: center;
-            font-size: clamp(18px, 3vw, 25px); /* Fluid subtitle size */
+            font-size: clamp(18px, 3vw, 25px);
             color: #666;
             margin-bottom: 50px;
             max-width: 800px;
@@ -192,15 +187,14 @@
 
         /* BENEFITS GRID */
         .benefits-grid {
-            /* Changed to repeat(auto-fit, minmax(250px, 1fr)) for better responsiveness */
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px; /* Increased gap */
+            gap: 30px;
         }
 
         .benefit-card {
             background: #fff;
-            padding: 30px; /* Increased padding */
+            padding: 30px;
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
             transition: transform 0.2s, box-shadow 0.2s;
@@ -235,12 +229,12 @@
 
         .benefit-title {
             font-weight: bold;
-            font-size: 28px; /* Slightly adjusted size */
+            font-size: 28px;
             margin-bottom: 8px;
         }
 
         .benefit-desc {
-            font-size: 18px; /* Slightly adjusted size */
+            font-size: 18px;
             color: #555;
         }
 
@@ -282,7 +276,6 @@
         /* Tablet/Smaller Desktop (Header/Nav changes) */
         @media (max-width: 1000px) {
             .nav-buttons {
-                /* Hide navigation buttons on smaller screens */
                 display: none;
                 flex-direction: column;
                 position: absolute;
@@ -292,43 +285,47 @@
                 background-color: rgb(24, 119, 242);
                 box-shadow: 0 4px 10px rgba(0,0,0,0.1);
                 padding-top: 10px;
+                align-items: center;
             }
 
             .nav-buttons.active {
-                /* Show the mobile menu */
                 display: flex;
             }
 
             .nav-buttons div, .booknow {
-                width: 100%;
+                width: 80%;
                 text-align: center;
                 border: none;
                 margin: 0;
                 padding: 15px 0;
                 border-radius: 0;
             }
+            
+            .nav-buttons div {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            }
 
+            /* MOBILE MENU CTA BUTTON: Reverts to original blue/white style for contrast in the menu */
             .booknow {
-                background-color: white;
-                color: rgb(24, 119, 242);
+                background-color: white; 
+                color: rgb(24, 119, 242); 
+                border-color: white;
                 margin-top: 10px;
                 margin-bottom: 20px;
+                border-radius: 5px;
             }
 
             .menu-toggle {
-                display: flex; /* Show the hamburger icon */
+                display: flex;
             }
         }
 
         /* Mobile Layout */
         @media (max-width: 768px) {
-            
-            /* Header adjustments */
             .header-container {
                 padding: 0 5vw;
             }
 
-            /* Benefits grid adjusts to a single column for very small screens */
             .benefits-grid {
                 grid-template-columns: 1fr;
             }
@@ -337,53 +334,27 @@
                 padding: 20px;
             }
 
-           .nav-buttons div {
-            font-size: 20px;
-            color: white;
-            cursor: pointer;
-            border: 1px solid transparent; 
-            padding: 10px;
-            transition: border-color 0.3s ease; 
-            width: 200px;
-           }
-
-
-
-            .nav-buttons div:hover {
-            border-color: white; 
-            }  
-
-
-            .booknow{
-              width: 220px;
-              border-radius: 10px;
+            .nav-buttons div, .booknow {
+                width: 90%; 
             }
         }
         
         /* Adjustments for even smaller phones */
         @media (max-width: 480px) {
-            
-            /* Hero text compression */
             .title-inside-couple-image {
-                top: 50px;
+                bottom: clamp(80px, 15vh, 120px);
+                font-size: clamp(30px, 8vw, 45px);
             }
             
             .text-in-image {
-                top: 150px;
+                bottom: clamp(50px, 10vh, 80px);
             }
             
             .text-in-image-line2 {
-                top: 175px;
-            }
-            
-            .book-service-button {
-                padding: 12px 20px;
-                font-size: 18px;
-                top: 220px;
+                bottom: clamp(20px, 5vh, 40px);
             }
             
             .section-1 {
-                /* Give it a minimum height to ensure the image and text are visible */
                 min-height: 350px;
                 height: 50vh; 
             }
@@ -422,7 +393,6 @@
         <h1 class="title-inside-couple-image">Caring for Elders with<br>Love and Safety</h1>
         <p class="text-in-image">24/7 health support, companionship,</p>
         <p class="text-in-image-line2">and peace of mind for families</p>
-        <p class="book-service-button">Book a Service</p>
     </section>
 
     <section>
