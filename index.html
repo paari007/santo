@@ -8,9 +8,19 @@
 <link href="https://fonts.googleapis.com/css2?family=BBH+Sans+Hegarty&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <title>Santo</title>
   <style>
+    html{
+    height: 100%;
+    }
+
     body{
       margin: 0px;
       font-family: "Roboto", sans-serif;
+      height: 3000px;
+      margin: 0;
+      padding: 0;
+      background: #f8f9fa;
+      color: #333;
+      height: 100%;
     }
     .header-container{
       height: 68px;
@@ -18,7 +28,10 @@
       align-items: center;
       justify-content: space-around;
       background-color:rgb(24, 119, 242);
-      position: sticky;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
     }
 
     .logo{
@@ -82,6 +95,7 @@
 .section-1{
   height:80vh;
   display: flex;
+  margin-top: 68px;
 }
 
 .old-couple-image{
@@ -145,13 +159,108 @@
 .book-service-button:hover{
   background-color: rgb(15, 71, 144);
 }
+
+ 
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    /* Section Titles */
+    .section-title {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 58px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 25px;
+      color: #666;
+      margin-bottom: 50px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* BENEFITS GRID */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .benefit-card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: transform 0.2s;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-4px);
+      
+    }
+
+    .benefit-card:hover .benefit-title {
+     color: rgb(24, 119, 242);
+     }
+
+     .benefit-card .lucide{
+      color:rgb(24, 119, 242); 
+      width: 40px;
+      height: 40px;
+      padding: 15px;
+      border-radius: 10px;
+      background-color: #eef2f6
+     }
+
+
+     .benefit-card:hover .lucide{
+      color: white;
+      background-color:rgb(24, 119, 242);  
+     }
+
+
+
+    
+
+   
+
+    .benefit-title {
+      font-weight: bold;
+      font-size: 33px;
+      margin-bottom: 8px;
+    }
+
+    .benefit-desc {
+      font-size: 25px;
+      color: #555;
+    }
+
+   
+ 
+
+   
   </style>
 </head>
 <body>
   <header class="header-container">
     <div class="logo-and-name-container">
        <img class="logo" src="5968705.png">
-       <p class="brand-name">Santo</p>
+       <p class="brand-name">SantoCare</p>
     </div>
 
 
@@ -172,5 +281,51 @@
     <p class="text-in-image-line2">and peace of mind for families</p>
     <p class="book-service-button">Book a Service</p>
    </section>
+
+
+<!-- WHY CHOOSE SANTOCARE -->
+   <section>
+  <div class="container">
+    <h2 class="section-title">Why Choose SantoCare?</h2>
+    <p class="section-subtitle">
+      Comprehensive care designed to help seniors live independently with dignity and safety
+    </p>
+
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <i class="lucide" data-lucide="shield"></i>
+        <div class="benefit-title">24/7 Emergency Support</div>
+        <div class="benefit-desc">Round-the-clock access to medical help and emergency response</div>
+      </div>
+
+      <div class="benefit-card">
+        <i class="lucide" data-lucide="heart"></i>
+        <div class="benefit-title">Health Monitoring</div>
+        <div class="benefit-desc">Regular health check-ups and vital signs monitoring</div>
+      </div>
+
+      <div class="benefit-card">
+        <i class="lucide" data-lucide="clock"></i>
+        <div class="benefit-title">Daily Assistance</div>
+        <div class="benefit-desc">Help with daily activities and medication management</div>
+      </div>
+
+      <div class="benefit-card">
+        <i class="lucide" data-lucide="users"></i>
+        <div class="benefit-title">Companionship</div>
+        <div class="benefit-desc">Social engagement and emotional support programs</div>
+      </div>
+    </div>
+  </div>
+   </section>
+
+
+
+
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+       lucide.createIcons(); // Activate icons
+    </script>
 </body>
 </html>
