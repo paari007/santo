@@ -1,221 +1,477 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ElderCare Sections</title>
-  <link rel="stylesheet" href="https://unpkg.com/lucide-static/dist/umd/lucide.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=BBH+Sans+Hegarty&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Santo</title>
+    <style>
+        /* Base and General Styles */
+        html {
+            height: 100%;
+            /* Prevents horizontal scroll on small screens when using percentage widths */
+            overflow-x: hidden; 
+        }
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f8f9fa;
-      color: #333;
-    }
+        body {
+            margin: 0;
+            font-family: "Roboto", sans-serif;
+            padding: 0;
+            background: #f8f9fa;
+            color: #333;
+            /* Using min-height instead of fixed large height */
+            min-height: 100vh; 
+        }
 
-    .container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 40px 20px;
-    }
+        /* HEADER */
+        .header-container {
+            height: 68px;
+            display: flex;
+            align-items: center;
+            /* Use space-between for better responsiveness */
+            justify-content: space-between; 
+            padding: 0 5vw; /* Use viewport units for side padding */
+            background-color: rgb(24, 119, 242);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            box-sizing: border-box; /* Crucial for padding/border not affecting total width */
+            z-index: 1000;
+        }
 
-    h2 {
-      font-size: 32px;
-      margin-bottom: 10px;
-    }
+        .logo {
+            height: 24px;
+        }
 
-    p {
-      margin: 0;
-    }
+        .brand-name {
+            font-family: "Roboto", sans-serif;
+            font-weight: bolder;
+            font-size: 30px;
+            margin-left: 10px;
+            color: white;
+        }
 
-    /* Section Titles */
-    .section-title {
-      text-align: center;
-      margin-bottom: 20px;
-    }
+        .logo-and-name-container {
+            display: flex;
+            align-items: center;
+            font-size: 20px;
+            color: white;
+            cursor: pointer;
+            border: 1px solid transparent; 
+            padding: 10px;
+            transition: border-color 0.3s ease;
+            height: 25px;
+        }
 
-    .section-subtitle {
-      text-align: center;
-      font-size: 18px;
-      color: #666;
-      margin-bottom: 50px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+        .logo-and-name-container:hover {
+            border-color: white;
+        }
 
-    /* BENEFITS GRID */
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
+        .nav-buttons {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end; /* Align to the right */
+            gap: 20px; /* Use gap instead of fixed width */
+        }
 
-    .benefit-card {
-      background: #fff;
-      padding: 20px;
-      border-radius: 12px;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      transition: transform 0.2s;
-    }
+        .nav-buttons div {
+            font-size: 20px;
+            color: white;
+            cursor: pointer;
+            border: 1px solid transparent; 
+            padding: 10px;
+            transition: border-color 0.3s ease; 
+        }
 
-    .benefit-card:hover {
-      transform: translateY(-4px);
-    }
+        .nav-buttons div:hover {
+            border-color: white; 
+        }
 
-    .benefit-card i {
-      font-size: 36px;
-      margin-bottom: 10px;
-      display: inline-block;
-    }
+        .booknow {
+            color: rgb(24, 119, 242);
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 15px; /* Adjust padding for better look */
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap; /* Prevent button text from wrapping */
+        }
 
-    .benefit-title {
-      font-weight: bold;
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
+        /* SECTION 1 - HERO */
+        .section-1 {
+            /* Adjust height to be flexible and account for the fixed header */
+            height: calc(100vh - 68px); 
+            min-height: 450px;
+            display: flex;
+            margin-top: 68px;
+            position: relative; /* Make it the positioning context for absolute children */
+        }
 
-    .benefit-desc {
-      font-size: 15px;
-      color: #555;
-    }
+        .old-couple-image {
+            width: 100%; /* Make image take full width of container */
+            height: 100%; /* Make image take full height of container */
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1; /* Place behind text */
+        }
 
-    /* SERVICES GRID */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-    }
+        /* Hero Text and Button Positioning */
+        .title-inside-couple-image, .text-in-image, .text-in-image-line2, .book-service-button {
+            position: absolute;
+            left: 5vw; /* Use viewport units for left margin */
+            color: white;
+            text-shadow:
+                -1px -1px 0 rgba(0, 0, 0, 0.7),
+                1px -1px 0 rgba(0, 0, 0, 0.7),
+                -1px 1px 0 rgba(0, 0, 0, 0.7),
+                1px 1px 0 rgba(0, 0, 0, 0.7); 
+        }
 
-    .service-card {
-      background: #fff;
-      padding: 20px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      transition: box-shadow 0.2s;
-    }
+        .title-inside-couple-image {
+            font-size: clamp(30px, 6vw, 50px); /* Use clamp for fluid typography */
+            top: 100px;
+        }
 
-    .service-card:hover {
-      box-shadow: 0 8px 18px rgba(0,0,0,0.1);
-    }
+        .text-in-image, .text-in-image-line2 {
+            font-size: clamp(18px, 3vw, 26px);
+            max-width: 90%;
+        }
 
-    .service-card i {
-      font-size: 32px;
-      flex-shrink: 0;
-    }
+        .text-in-image {
+            top: clamp(200px, 35vh, 250px);
+        }
 
-    .view-btn {
-      display: block;
-      text-align: center;
-      margin: 40px auto 0;
-      padding: 12px 24px;
-      font-size: 16px;
-      border: 2px solid #007bff;
-      background: transparent;
-      color: #007bff;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+        .text-in-image-line2 {
+            top: clamp(230px, 40vh, 285px);
+        }
 
-    .view-btn:hover {
-      background: #007bff;
-      color: #fff;
-    }
-  </style>
+        .book-service-button {
+            background-color: rgb(24, 119, 242);
+            padding: 15px 30px; /* Slightly smaller base padding */
+            font-size: clamp(18px, 3.5vw, 26px);
+            border: none;
+            border-radius: 10px;
+            top: clamp(290px, 50vh, 350px);
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .book-service-button:hover {
+            background-color: rgb(15, 71, 144);
+        }
+
+        /* Container & Titles */
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            /* Flexible vertical padding, minimum horizontal padding */
+            padding: 40px 5vw; 
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: clamp(35px, 6vw, 58px); /* Fluid title size */
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: clamp(18px, 3vw, 25px); /* Fluid subtitle size */
+            color: #666;
+            margin-bottom: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* BENEFITS GRID */
+        .benefits-grid {
+            /* Changed to repeat(auto-fit, minmax(250px, 1fr)) for better responsiveness */
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px; /* Increased gap */
+        }
+
+        .benefit-card {
+            background: #fff;
+            padding: 30px; /* Increased padding */
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .benefit-card:hover .benefit-title {
+            color: rgb(24, 119, 242);
+        }
+
+        .benefit-card .lucide {
+            color: rgb(24, 119, 242); 
+            width: 40px;
+            height: 40px;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #eef2f6;
+            margin-bottom: 15px;
+        }
+
+        .benefit-card:hover .lucide {
+            color: white;
+            background-color: rgb(24, 119, 242); 
+        }
+
+        .benefit-title {
+            font-weight: bold;
+            font-size: 28px; /* Slightly adjusted size */
+            margin-bottom: 8px;
+        }
+
+        .benefit-desc {
+            font-size: 18px; /* Slightly adjusted size */
+            color: #555;
+        }
+
+        /* Hamburger Menu Icon (hidden by default) */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background: white;
+            border-radius: 10px;
+            transition: all 0.3s linear;
+        }
+
+        /* State for when the menu is active */
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* --- MEDIA QUERIES FOR RESPONSIVENESS --- */
+
+        /* Tablet/Smaller Desktop (Header/Nav changes) */
+        @media (max-width: 1000px) {
+            .nav-buttons {
+                /* Hide navigation buttons on smaller screens */
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 68px;
+                right: 0;
+                width: 100%;
+                background-color: rgb(24, 119, 242);
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                padding-top: 10px;
+            }
+
+            .nav-buttons.active {
+                /* Show the mobile menu */
+                display: flex;
+            }
+
+            .nav-buttons div, .booknow {
+                width: 100%;
+                text-align: center;
+                border: none;
+                margin: 0;
+                padding: 15px 0;
+                border-radius: 0;
+            }
+
+            .booknow {
+                background-color: white;
+                color: rgb(24, 119, 242);
+                margin-top: 10px;
+                margin-bottom: 20px;
+            }
+
+            .menu-toggle {
+                display: flex; /* Show the hamburger icon */
+            }
+        }
+
+        /* Mobile Layout */
+        @media (max-width: 768px) {
+            
+            /* Header adjustments */
+            .header-container {
+                padding: 0 5vw;
+            }
+
+            /* Benefits grid adjusts to a single column for very small screens */
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .benefit-card {
+                padding: 20px;
+            }
+
+           .nav-buttons div {
+            font-size: 20px;
+            color: white;
+            cursor: pointer;
+            border: 1px solid transparent; 
+            padding: 10px;
+            transition: border-color 0.3s ease; 
+            width: 200px;
+           }
+
+
+
+            .nav-buttons div:hover {
+            border-color: white; 
+            }  
+
+
+            .booknow{
+              width: 220px;
+              border-radius: 10px;
+            }
+        }
+        
+        /* Adjustments for even smaller phones */
+        @media (max-width: 480px) {
+            
+            /* Hero text compression */
+            .title-inside-couple-image {
+                top: 50px;
+            }
+            
+            .text-in-image {
+                top: 150px;
+            }
+            
+            .text-in-image-line2 {
+                top: 175px;
+            }
+            
+            .book-service-button {
+                padding: 12px 20px;
+                font-size: 18px;
+                top: 220px;
+            }
+            
+            .section-1 {
+                /* Give it a minimum height to ensure the image and text are visible */
+                min-height: 350px;
+                height: 50vh; 
+            }
+            
+            .brand-name {
+                font-size: 24px;
+            }
+        }
+
+    </style>
 </head>
 <body>
+    <header class="header-container">
+        <div class="logo-and-name-container">
+            <img class="logo" src="5968705.png" alt="SantoCare Logo">
+            <p class="brand-name">SantoCare</p>
+        </div>
 
-<!-- WHY CHOOSE ELDERCARE -->
-<section>
-  <div class="container">
-    <h2 class="section-title">Why Choose ElderCare?</h2>
-    <p class="section-subtitle">
-      Comprehensive care designed to help seniors live independently with dignity and safety
-    </p>
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
 
-    <div class="benefits-grid">
-      <div class="benefit-card">
-        <i data-lucide="shield"></i>
-        <div class="benefit-title">24/7 Emergency Support</div>
-        <div class="benefit-desc">Round-the-clock access to medical help and emergency response</div>
-      </div>
+        <div class="nav-buttons" id="navButtons">
+            <div>Home</div>
+            <div>Plans</div>
+            <div>Our Services</div>
+            <div>Login/SignUp</div>
+            <button class="booknow">Book Now</button>
+        </div>
+    </header>
 
-      <div class="benefit-card">
-        <i data-lucide="heart"></i>
-        <div class="benefit-title">Health Monitoring</div>
-        <div class="benefit-desc">Regular health check-ups and vital signs monitoring</div>
-      </div>
+    <section class="section-1">
+        <img class="old-couple-image" src="oc.jpg" alt="A smiling elderly couple">
+        <h1 class="title-inside-couple-image">Caring for Elders with<br>Love and Safety</h1>
+        <p class="text-in-image">24/7 health support, companionship,</p>
+        <p class="text-in-image-line2">and peace of mind for families</p>
+        <p class="book-service-button">Book a Service</p>
+    </section>
 
-      <div class="benefit-card">
-        <i data-lucide="clock"></i>
-        <div class="benefit-title">Daily Assistance</div>
-        <div class="benefit-desc">Help with daily activities and medication management</div>
-      </div>
+    <section>
+        <div class="container">
+            <h2 class="section-title">Why Choose SantoCare?</h2>
+            <p class="section-subtitle">
+                Comprehensive care designed to help seniors live independently with dignity and safety
+            </p>
 
-      <div class="benefit-card">
-        <i data-lucide="users"></i>
-        <div class="benefit-title">Companionship</div>
-        <div class="benefit-desc">Social engagement and emotional support programs</div>
-      </div>
-    </div>
-  </div>
-</section>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <i class="lucide" data-lucide="shield"></i>
+                    <div class="benefit-title">24/7 Emergency Support</div>
+                    <div class="benefit-desc">Round-the-clock access to medical help and emergency response</div>
+                </div>
 
-<!-- OUR SERVICES -->
-<section style="background: #eef2f6;">
-  <div class="container">
-    <h2 class="section-title">Our Services</h2>
-    <p class="section-subtitle">
-      Comprehensive care solutions tailored to meet the unique needs of every senior
-    </p>
+                <div class="benefit-card">
+                    <i class="lucide" data-lucide="heart"></i>
+                    <div class="benefit-title">Health Monitoring</div>
+                    <div class="benefit-desc">Regular health check-ups and vital signs monitoring</div>
+                </div>
 
-    <div class="services-grid">
-      <div class="service-card">
-        <i data-lucide="check-circle"></i>
-        <p>Emergency Response System</p>
-      </div>
+                <div class="benefit-card">
+                    <i class="lucide" data-lucide="clock"></i>
+                    <div class="benefit-title">Daily Assistance</div>
+                    <div class="benefit-desc">Help with daily activities and medication management</div>
+                </div>
 
-      <div class="service-card">
-        <i data-lucide="check-circle"></i>
-        <p>Health Monitoring & Telemedicine</p>
-      </div>
+                <div class="benefit-card">
+                    <i class="lucide" data-lucide="users"></i>
+                    <div class="benefit-title">Companionship</div>
+                    <div class="benefit-desc">Social engagement and emotional support programs</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      <div class="service-card">
-        <i data-lucide="check-circle"></i>
-        <p>Daily Living Assistance</p>
-      </div>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons(); // Activate icons
 
-      <div class="service-card">
-        <i data-lucide="check-circle"></i>
-        <p>Companionship Programs</p>
-      </div>
+        // JavaScript for the Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navButtons = document.getElementById('navButtons');
 
-      <div class="service-card">
-        <i data-lucide="check-circle"></i>
-        <p>Home Care Services</p>
-      </div>
-
-      <div class="service-card">
-        <i data-lucide="check-circle"></i>
-        <p>Activity & Wellness Programs</p>
-      </div>
-    </div>
-
-    <button class="view-btn">View All Services</button>
-  </div>
-</section>
-
-<script src="https://unpkg.com/lucide@latest"></script>
-<script>
-  lucide.createIcons(); // Activate icons
-</script>
-
+        menuToggle.addEventListener('click', () => {
+            navButtons.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
